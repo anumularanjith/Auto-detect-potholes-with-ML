@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload image</title>
+  <style>
+  *{
+    background-color: black;
+    text-align: center;
+    color: teal;
+  }
+  .topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #f17704;
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+}
+</style>
+</head>
+
+<body>
+  <div class="topnav">
+    <a class="logo" href="https://code.swecha.org/naniswaroop/project-img/-/raw/master/24ki.jpg"></a>
+    <a href="index.html" style="font-size: 20px; font-weight: 700;font-style: oblique;">Pothole Detection</a>
+    <div class="topnav-right">
+      <a href="index.html">Home</a>
+       <a href="about.html">About</a>
+      <a class="active" href="pothole.html">Upload</a>
+      <a href="map.html">Map</a>
+     
+      <a href="team.html">Contact</a>
+      
+        </div>
+        </div>
+        <div class="section-inner">
+            <h1 style="color: darkorange;margin-top: 10%;font-size: 50px;font-weight: 900;font-style:oblique;">Upload the image here<br>
+            </h1>
+            <input type="file" accept="image/*" capture >
+            <br><br><br><br>
+            <label for="fname">Adress :</label>
+            <input type="text" id="fname" name="fname"><br><br>
+            <script>
+                const fileInput = document.getElementById('file-input') ;
+
+                fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+            </script>
+            <br>
+            <br>
+
+            <br>
+            <button onclick="getLocation()" style="color: white;background-color: teal;">Submit</button>
+
+            <p id="demo"></p>
+            
+            <script>
+            var x = document.getElementById("demo");
+            
+            function getLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+              } else { 
+                x.innerHTML = "Geolocation is not supported by this browser.";
+              }
+            }
+            
+            function showPosition(position) {
+              x.innerHTML ="Latitude: " + position.coords.latitude + 
+              "<br>Longitude: " + position.coords.longitude;
+            }
+            
+            function showError(error) {
+              switch(error.code) {
+                case error.PERMISSION_DENIED:
+                  x.innerHTML = "In oder to submit your issues accept the location."
+                  break;
+                case error.POSITION_UNAVAILABLE:
+                  x.innerHTML = "Location information is unavailable."
+                  break;
+                case error.TIMEOUT:
+                  x.innerHTML = "The request to get user location timed out."
+                  break;
+                case error.UNKNOWN_ERROR:
+                  x.innerHTML = "An unknown error occurred."
+                  break;
+              }
+            }
+            </script>
+        </div>
+        <footer>
+  <div>
+  </div>
+</footer>
+</body>
+</html>
